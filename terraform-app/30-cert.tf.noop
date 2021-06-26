@@ -1,0 +1,13 @@
+resource "kubernetes_secret" "tls-secret" {
+  type = "kubernetes.io/tls"
+
+  metadata {
+    name = "star-campuscloud-io"
+    namespace = "default"
+  }
+
+  data = {
+    "tls.crt" = file("../certs/server.crt")
+    "tls.key" = file("../certs/server.key")
+  }
+}
