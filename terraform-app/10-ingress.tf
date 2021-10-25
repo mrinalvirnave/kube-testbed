@@ -3,11 +3,12 @@
 
 resource "helm_release" "ingress" {
   repository = "https://kubernetes.github.io/ingress-nginx"
-  version = "3.31.0"
+  version = "4.0.6"
   chart = "ingress-nginx"
   name = "ingress-nginx"
-  namespace = "ingress"
+  namespace = "ingress-nginx"
   create_namespace = "true"
+  
   // Uncomment the Following of Internal loadbalancer is desired
 //  set {
 //    name  = "controller.service.loadBalancerIP"

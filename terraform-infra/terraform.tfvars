@@ -1,3 +1,3 @@
 
 aks_admin_username          = "aksadmin"
-aks_ssh_public_key          = "./assets/id_rsa.pub"
+aks_ssh_public_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAo6ug0FHtAGTA+CrrcJqIeoKG2V7U1XEaQ4JuZ2crJBebmZw+qEJs3Yo4RJh6ML0BKDHMFYoWlMWTwBeanFcqAQfPIoKBEZfNIM4N92VQm1wxDdosGigE0TInnxWGg6OPSOs/P4aAJRo5Tos6ZHpEqOyTHgRvqyXFYX/YGM62EDTip7OHvu12zApLHNpMIKNkFF8FDI4NvpoKrpmY0pqy64NA3c3KtgHRk34RkYeXMG2Yj2GcHVWG6hTdDbrGxlN2sYErSXBcxNpth8SEDN1DNAkxcNxQmLXrXr7QT0hNTzlQwE9Yxo/0EcQf7aEjlZs1oXnvej7DhnakL6A7zVdEVQ== mrinal@virnave.com"

@@ -7,10 +7,10 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = "~> 2.57.0"
+      version = "~> 2.82.0"
     }
   }
-  required_version = ">= 0.15"
+  required_version = ">= 1.0"
   backend "azurerm" {
     storage_account_name = "mvconfigstore"
     container_name       = "testbed"

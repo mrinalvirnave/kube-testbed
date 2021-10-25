@@ -29,7 +29,7 @@ variable "tags" {
 # AKS Variables
 variable "aks_k8s_version" {
   description = "Version of Kubernetes"
-  default = "1.20.5"
+  default = "1.21.2"
 }
 
 variable "aks_min_server_count" {
@@ -54,5 +54,5 @@ variable "aks_osdisksize" {
 
 variable "aks_vm_size" {
   description = "Size of AKS Virtual Machines to build"
-  default     = "Standard_D2s_v3"
+  default     = "Standard_B2s"
 }

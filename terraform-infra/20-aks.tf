@@ -25,7 +25,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   linux_profile {
     admin_username = var.aks_admin_username
     ssh_key {
-      key_data = file(var.aks_ssh_public_key)
+      key_data = var.aks_ssh_public_key
     }
   }
 
@@ -55,6 +55,20 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   //  ]
   //}
 
+}
+
+data "azurerm_client_config" "current_user" {
+}
+
+resource "azurerm_role_assignment" "kube_admin" {
+  scope                = azurerm_kubernetes_cluster.aks_cluster.id
+  role_definition_name = "Azure Kubernetes Service Cluster Admin Role"
+  principal_id         = data.azurerm_client_config.current_user.object_id
+}
+resource "azurerm_role_assignment" "kube_rbac_admin" {
+  scope                = azurerm_kubernetes_cluster.aks_cluster.id
+  role_definition_name = "Azure Kubernetes Service RBAC Cluster Admin"
+  principal_id         = data.azurerm_client_config.current_user.object_id
 }
 
 output "kubernetes_config" {
