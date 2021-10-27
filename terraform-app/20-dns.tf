@@ -17,3 +17,11 @@ resource "azurerm_dns_a_record" "aks" {
     ttl = 300
     records = [ data.kubernetes_service.ingress.status.0.load_balancer.0.ingress.0.ip ]
 }
+
+resource "azurerm_dns_a_record" "star-aks" {
+    name = "*.aks"
+    zone_name = data.azurerm_dns_zone.eduinks_net.name
+    resource_group_name = data.azurerm_dns_zone.eduinks_net.resource_group_name
+    ttl = 300
+    records = [ data.kubernetes_service.ingress.status.0.load_balancer.0.ingress.0.ip ]
+}
