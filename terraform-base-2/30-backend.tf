@@ -95,6 +95,7 @@ resource "kubernetes_service" "echo2" {
 }
 
 resource "kubernetes_ingress" "echo" {
+  depends_on = [kubernetes_manifest.clusterissuer_letsencrypt_prod]
   metadata {
     name = "echo2"
     annotations = {

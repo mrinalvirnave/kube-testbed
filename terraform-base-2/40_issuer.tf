@@ -1,4 +1,4 @@
-resource "kubernetes_manifest" "clusterissuer_cert_manager_letsencrypt_staging" {
+resource "kubernetes_manifest" "clusterissuer_letsencrypt_staging" {
   manifest = {
     "apiVersion" = "cert-manager.io/v1"
     "kind" = "ClusterIssuer"

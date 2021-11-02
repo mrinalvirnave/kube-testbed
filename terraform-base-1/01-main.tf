@@ -33,7 +33,7 @@ provider "azurerm" {
 //}
 
 terraform {
-  required_version = ">= 0.15"
+  required_version = ">= 1.0"
   required_providers {
 //    kubectl = {
 //      source = "gavinbunney/kubectl"
@@ -55,7 +55,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "mvconfigstore"
     container_name       = "testbed"
-    key                  = "app.tfstate"
+    key                  = "base-1.tfstate"
     # for security reasons we don't specify the access_key here.  instead set the environment variable ARM_ACCESS_KEY.
   }
 }
