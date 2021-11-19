@@ -1,7 +1,7 @@
 resource "helm_release" "argocd" {
   depends_on = [kubernetes_manifest.clusterissuer_letsencrypt_staging, kubernetes_manifest.clusterissuer_letsencrypt_prod]
   repository = "https://argoproj.github.io/argo-helm"
-  version = "3.26.3"
+  version = "3.26.9"
   chart = "argo-cd"
   name = "argo-cd"
   namespace = "argo-cd"
@@ -22,22 +22,21 @@ resource "helm_release" "argocd" {
     <<-EOF
     server:
       config:
-        url: argocd.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}
+        url: argocd.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}
       ingress:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-prod
-          kubernetes.io/ingress.class: nginx
           kubernetes.io/tls-acme: "true"
           nginx.ingress.kubernetes.io/ssl-passthrough: "true"
           nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         tls:
           - secretName: argocd-secret
             hosts:
-              - argocd.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}
+              - argocd.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}
         ingressClassName: nginx
         hosts:
-          - argocd.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}
+          - argocd.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}
 
     EOF
   ]

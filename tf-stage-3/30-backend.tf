@@ -106,13 +106,13 @@ resource "kubernetes_ingress" "echo" {
   spec {
     tls {
       hosts = [
-        "echo1.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}",
-        "echo2.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}"
+        "echo1.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}",
+        "echo2.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}"
       ]
       secret_name = "echo-tls"
     }
     rule {
-      host = "echo1.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}"
+      host = "echo1.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}"
       http {
         path {
           backend {
@@ -123,7 +123,7 @@ resource "kubernetes_ingress" "echo" {
       }
     }
     rule {
-      host = "echo2.${trimsuffix(azurerm_dns_a_record.aks.fqdn, ".")}"
+      host = "echo2.${trimsuffix(azurerm_dns_a_record.domain.fqdn, ".")}"
       http {
         path {
           backend {

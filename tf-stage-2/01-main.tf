@@ -55,7 +55,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "mvconfigstore"
     container_name       = "testbed"
-    key                  = "base-1.tfstate"
+    key                  = "stage-2.tfstate"
     # for security reasons we don't specify the access_key here.  instead set the environment variable ARM_ACCESS_KEY.
   }
 }
@@ -67,6 +67,6 @@ data "terraform_remote_state" "aks_cluster" {
   config = {
     storage_account_name = "mvconfigstore"
     container_name       = "testbed"
-    key                  = "infra.tfstate"
+    key                  = "stage-1.tfstate"
   }
 }

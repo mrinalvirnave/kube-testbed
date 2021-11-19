@@ -2,13 +2,13 @@
 # It creates an AKS cluster for use with TREX
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                = "AKS-${var.country}-${var.region}-TESTBED"
+  name                = "KUBE-TESTBED"
   location            = var.location
   resource_group_name = azurerm_resource_group.testbed.name
   dns_prefix          = "testbed"
   kubernetes_version  = var.aks_k8s_version
 
-  node_resource_group = "RG-${var.country}-${var.region}-TESTBED-AKSNODES"
+  node_resource_group = "KUBE-TESTBED-AKSNODES"
   default_node_pool {
     name                 = "default"
     orchestrator_version = var.aks_k8s_version
