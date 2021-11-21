@@ -1,0 +1,2 @@
+dnszone = "example.com"
+email = "letsencrypt_notifications@myemaildomain.com"

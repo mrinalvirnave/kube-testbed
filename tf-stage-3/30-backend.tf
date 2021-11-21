@@ -20,7 +20,7 @@ resource "kubernetes_deployment" "echo1" {
         container {
           name = "echo1"
           image = "hashicorp/http-echo"
-          args = [ "-text=<h1>echo1</h1>" ]
+          args = [ "-text=<h1 style=\"background-color: lightgreen\">ECHO 1</h1>" ]
           port {
             container_port = 5678
           }
@@ -68,7 +68,7 @@ resource "kubernetes_deployment" "echo2" {
         container {
           name = "echo2"
           image = "hashicorp/http-echo"
-          args = [ "-text=<h1>echo2</h1>" ]
+          args = [ "-text=<h1 style=\"background-color: pink\">ECHO 2</h1>" ]
           port {
             container_port = 5678
           }

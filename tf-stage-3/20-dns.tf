@@ -11,7 +11,7 @@ data "kubernetes_service" "ingress" {
 }
 
 resource "azurerm_dns_a_record" "domain" {
-    name = var.domain
+    name = var.subdomain
     zone_name = data.azurerm_dns_zone.main_dnszone.name
     resource_group_name = data.azurerm_dns_zone.main_dnszone.resource_group_name
     ttl = 300
@@ -19,7 +19,7 @@ resource "azurerm_dns_a_record" "domain" {
 }
 
 resource "azurerm_dns_a_record" "star-aks" {
-    name = "*.${var.domain}"
+    name = "*.${var.subdomain}"
     zone_name = data.azurerm_dns_zone.main_dnszone.name
     resource_group_name = data.azurerm_dns_zone.main_dnszone.resource_group_name
     ttl = 300

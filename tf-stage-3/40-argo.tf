@@ -4,7 +4,7 @@ resource "helm_release" "argocd" {
   version = "3.26.9"
   chart = "argo-cd"
   name = "argo-cd"
-  namespace = "argo-cd"
+  namespace = "argocd"
   create_namespace = "true"
 
   // Uncomment the Following of Internal loadbalancer is desired

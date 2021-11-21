@@ -7,7 +7,7 @@ resource "kubernetes_manifest" "clusterissuer_letsencrypt_staging" {
     }
     "spec" = {
       "acme" = {
-        "email" = "mrinal.virnave@gmail.com"
+        "email" = var.email
         "privateKeySecretRef" = {
           "name" = "letsencrypt-staging"
         }
