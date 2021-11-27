@@ -24,21 +24,21 @@ provider "azurerm" {
     features {}
 }
 
-//provider "kubectl" {
-//  load_config_file       = false
-//  client_certificate     = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_client_certificate)
-//  client_key             = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_client_key)
-//  cluster_ca_certificate = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_cluster_ca_certificate)
-//  host                   = data.terraform_remote_state.aks_cluster.outputs.kubernetes_host
-//}
+provider "kubectl" {
+  load_config_file       = false
+  client_certificate     = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_client_certificate)
+  client_key             = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_client_key)
+  cluster_ca_certificate = base64decode(data.terraform_remote_state.aks_cluster.outputs.kubernetes_cluster_ca_certificate)
+  host                   = data.terraform_remote_state.aks_cluster.outputs.kubernetes_host
+}
 
 terraform {
   required_version = ">= 1.0"
   required_providers {
-//    kubectl = {
-//      source = "gavinbunney/kubectl"
-//      version = "1.11.1"
-//    }
+    kubectl = {
+      source = "gavinbunney/kubectl"
+      version = "1.13.1"
+    }
     helm = {
       source = "hashicorp/helm"
       version = "2.3.0"
@@ -49,7 +49,7 @@ terraform {
     }
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.82.0"
+      version = "~> 2.87.0"
     }
   }
   backend "azurerm" {
