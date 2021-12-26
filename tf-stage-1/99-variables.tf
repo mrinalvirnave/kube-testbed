@@ -29,7 +29,7 @@ variable "tags" {
 # AKS Variables
 variable "aks_k8s_version" {
   description = "Version of Kubernetes"
-  default = "1.21.2"
+  default = "1.22.4"
 }
 
 variable "aks_min_server_count" {

@@ -49,4 +49,5 @@ data "kubectl_file_documents" "argocd_applicationset" {
 resource "kubectl_manifest" "argocd_applicationset" {
   for_each  = data.kubectl_file_documents.argocd_applicationset.manifests
   yaml_body = each.value
+  depends_on = [helm_release.argocd]
 }
