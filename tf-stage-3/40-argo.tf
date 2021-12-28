@@ -1,7 +1,7 @@
 resource "helm_release" "argocd" {
   depends_on = [kubernetes_manifest.clusterissuer_letsencrypt_staging, kubernetes_manifest.clusterissuer_letsencrypt_prod]
   repository = "https://argoproj.github.io/argo-helm"
-  version = "3.26.11"
+  version = "3.29.4"
   chart = "argo-cd"
   name = "argo-cd"
   namespace = "argocd"
